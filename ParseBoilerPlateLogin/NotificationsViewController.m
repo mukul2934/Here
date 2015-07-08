@@ -8,6 +8,8 @@
 
 #import "NotificationsViewController.h"
 #import "NotificationsTableViewCell.h"
+#import "DetailMapViewController.h"
+
 @interface NotificationsViewController ()
 
 // Outlets
@@ -16,16 +18,24 @@
 
 // Properties
 @property (strong, nonatomic) NSMutableArray *notifications;
+@property (strong, nonatomic) NSMutableArray *profilePics;
 
 @end
 
 @implementation NotificationsViewController
 
--(NSMutableArray *)notifications{
+- (NSMutableArray *)notifications{
     if (!_notifications) {
         _notifications = [[NSMutableArray alloc]init];
     }
     return _notifications;
+}
+
+- (NSMutableArray *)profilePics{
+    if (!_profilePics) {
+        _profilePics = [[NSMutableArray alloc]init];
+    }
+    return _profilePics;
 }
 
 - (void)viewDidLoad {
@@ -82,6 +92,7 @@
             customCell.profileImageView.layer.masksToBounds = YES;
             customCell.profileImageView.layer.cornerRadius = 25;
             customCell.profileImageView.image = [UIImage imageWithData:data];
+            [self.profilePics addObject:[UIImage imageWithData:data]];
         } else {
             NSLog(@"Failed to retrive profile image: NotificationsViewController");
         }
@@ -93,6 +104,19 @@
     [customCell reloadCell];
     
     return customCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"detailMapViewSegue" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailMapViewSegue"]) {
+        DetailMapViewController *mainView = [segue destinationViewController];
+        mainView.geoPoint = self.notifications[self.tableView.indexPathForSelectedRow.row][@"Location"];
+        mainView.message = self.notifications[self.tableView.indexPathForSelectedRow.row][@"Message"];
+        mainView.profilePic = self.profilePics[self.tableView.indexPathForSelectedRow.row];
+    }
 }
 
 

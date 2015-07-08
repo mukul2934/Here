@@ -45,6 +45,8 @@
 		1C71DF4C1B4CB15500BE3AAE /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C71DF461B4CB15500BE3AAE /* ParseFacebookUtils.framework */; };
 		1C71DF4D1B4CB15500BE3AAE /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C71DF471B4CB15500BE3AAE /* ParseFacebookUtilsV4.framework */; };
 		1C71DF4E1B4CB15500BE3AAE /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C71DF481B4CB15500BE3AAE /* ParseUI.framework */; };
+		1C71DF521B4CC4EF00BE3AAE /* DetailMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C71DF511B4CC4EF00BE3AAE /* DetailMapViewController.m */; };
+		1C71DF541B4CD1DB00BE3AAE /* maps-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C71DF531B4CD1DB00BE3AAE /* maps-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +112,9 @@
 		1C71DF461B4CB15500BE3AAE /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 		1C71DF471B4CB15500BE3AAE /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "parse-library-1/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		1C71DF481B4CB15500BE3AAE /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1/ParseUI.framework"; sourceTree = "<group>"; };
+		1C71DF501B4CC4EF00BE3AAE /* DetailMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMapViewController.h; sourceTree = "<group>"; };
+		1C71DF511B4CC4EF00BE3AAE /* DetailMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMapViewController.m; sourceTree = "<group>"; };
+		1C71DF531B4CD1DB00BE3AAE /* maps-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "maps-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +185,7 @@
 		1C28C1111B436EB30089B424 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1C71DF531B4CD1DB00BE3AAE /* maps-icon.png */,
 				1C28C1331B4B4B2B0089B424 /* thin frame with shadow.png */,
 				1C28C1141B436F580089B424 /* User_Avatar_Main_Picture_512.png */,
 				1C28C1121B436EE70089B424 /* Cancel_Music_256-2.png */,
@@ -254,6 +260,7 @@
 			children = (
 				1C28C1161B44A1190089B424 /* Main.storyboard */,
 				1C28C1261B45D6C80089B424 /* Notifications View */,
+				1C71DF4F1B4CC4D800BE3AAE /* Detail Map View */,
 				1C28C11F1B44DE630089B424 /* Friends View */,
 				1C28C11C1B44AFBF0089B424 /* App Delegate */,
 				1C28C1181B44AF6B0089B424 /* Main View */,
@@ -318,6 +325,15 @@
 				1C6DE76A1B436944004094AE /* Accounts.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C71DF4F1B4CC4D800BE3AAE /* Detail Map View */ = {
+			isa = PBXGroup;
+			children = (
+				1C71DF501B4CC4EF00BE3AAE /* DetailMapViewController.h */,
+				1C71DF511B4CC4EF00BE3AAE /* DetailMapViewController.m */,
+			);
+			name = "Detail Map View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +418,7 @@
 			files = (
 				1C71DF421B4CB10E00BE3AAE /* parse-library-1 in Resources */,
 				1C28C1341B4B4B2B0089B424 /* thin frame with shadow.png in Resources */,
+				1C71DF541B4CD1DB00BE3AAE /* maps-icon.png in Resources */,
 				1C28C1151B436F580089B424 /* User_Avatar_Main_Picture_512.png in Resources */,
 				1C28C1131B436EE70089B424 /* Cancel_Music_256-2.png in Resources */,
 				1C6DE7501B43647C004094AE /* Images.xcassets in Resources */,
@@ -423,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C71DF521B4CC4EF00BE3AAE /* DetailMapViewController.m in Sources */,
 				1C6DE7481B43647C004094AE /* AppDelegate.m in Sources */,
 				1C28C11B1B44AF7A0089B424 /* MainViewController.m in Sources */,
 				1C28C1221B44DE7D0089B424 /* FriendsViewController.m in Sources */,
