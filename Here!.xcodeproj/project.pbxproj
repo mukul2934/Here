@@ -238,7 +238,7 @@
 		1C6DE7361B43647B004094AE = {
 			isa = PBXGroup;
 			children = (
-				1C6DE7411B43647B004094AE /* ParseBoilerPlateLogin */,
+				1C6DE7411B43647B004094AE /* Here */,
 				1C6DE75B1B43647C004094AE /* ParseBoilerPlateLoginTests */,
 				1C6DE7401B43647B004094AE /* Products */,
 				1C71DF411B4CB10E00BE3AAE /* parse-library-1 */,
@@ -255,7 +255,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1C6DE7411B43647B004094AE /* ParseBoilerPlateLogin */ = {
+		1C6DE7411B43647B004094AE /* Here */ = {
 			isa = PBXGroup;
 			children = (
 				1C28C1161B44A1190089B424 /* Main.storyboard */,
@@ -270,6 +270,7 @@
 				1C6DE74F1B43647C004094AE /* Images.xcassets */,
 				1C6DE7421B43647B004094AE /* Supporting Files */,
 			);
+			name = Here;
 			path = ParseBoilerPlateLogin;
 			sourceTree = "<group>";
 		};

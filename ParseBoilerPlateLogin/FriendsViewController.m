@@ -40,22 +40,26 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    PFQuery *friendsQuery = [PFQuery queryWithClassName:@"Friends"];
-    [friendsQuery whereKey:@"User" equalTo:[PFUser currentUser]];
-    [friendsQuery findObjectsInBackgroundWithBlock:^(NSArray *friends, NSError *error) {
-        if ([friends count] > 0) {
-            [self.friends removeAllObjects];
-            for (PFObject *obj in friends) {
-                PFObject *friendObj = obj[@"Friend"];
-                PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-                [query orderByDescending:@"createdAt"];
-                [self.friends addObject:[query getObjectWithId:friendObj.objectId]];
+    [self populateFriends];
+}
+
+- (void)populateFriends {
+    // Populate Friends array
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query whereKey:@"User" equalTo:[PFUser currentUser]];
+    [query includeKey:@"Friend"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *obj in objects) {
+                PFObject *friend = obj[@"Friend"];
+                [self.friends addObject:friend];
             }
             [self.tableView reloadData];
         } else {
-            NSLog(@"No friends found");
+            NSLog(@"Failed to find friends");
         }
     }];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +78,7 @@
     addFriendAlert.alertViewStyle=UIAlertViewStylePlainTextInput;
     self.friendsTextField = [addFriendAlert textFieldAtIndex:0];
     [addFriendAlert show];
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -91,7 +96,7 @@
                 if (!error) {
                     UIAlertView *successAlert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Friend Added!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                     [successAlert show];
-                    
+                    [self populateFriends];
                 } else {
                     NSLog(@"Failed to add friend");
                 }
@@ -121,7 +126,7 @@
         if (!error) {
             customCell.profileImageView.image = [UIImage imageWithData:data];
             customCell.profileImageView.layer.masksToBounds = YES;
-            customCell.profileImageView.layer.cornerRadius = 50;
+            customCell.profileImageView.layer.cornerRadius = 40;
         } else {
             NSLog(@"Failed to retrieve profile image data");
         }
